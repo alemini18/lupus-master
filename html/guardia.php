@@ -18,7 +18,7 @@ if(isset($_POST["reportato"]))$reportato=$_POST["reportato"];
 <body>
   <div class="container center-align">
   <h1>Guardia<br><br></h1>
-  <form action="store.php" method="post">
+  <form action="veggente.php" method="post">
     <input type="hidden" id="auramorto" name="auramorto" value="<?php echo $auramorto; ?>">
     <input type="hidden" id="reportato" name="reportato" value="<?php echo $reportato; ?>">
     <input type="hidden" id="state" name="state" value="1">

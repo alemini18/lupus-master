@@ -22,8 +22,7 @@ include_once("funzioni.php");
    for($i=0;$i<10;$i++){
      for($j=0;$j<$_POST[$id[$i]];$j++){
      echo '<div class="row">';
-     echo '<div class="col s3"></div>';
-     echo '<div class="col s3">';
+     echo '<div class="col s6">';
      echo  '<h5 style="text-align: right;">'.$ruoli[$i].'</h5>';
      echo '</div>';
      echo  '<div class="col s2">';

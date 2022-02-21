@@ -25,9 +25,9 @@ else die("Mancano dati");
     $result=$db->query("SELECT * FROM morti");
     if($result->num_rows>0){
       while($row=$result->fetch_assoc()){
-        echo '<p>'.$row["morto"].'</p>';
+        echo '<h5>'.$row["morto"].'</h5>';
       }
-    }else echo "Nessuno è morto";
+    }else echo "<h5>Nessuno è morto<h5>";
     $result=$db->query('SELECT * FROM lupus WHERE tipo="Reporter"');
     $fr=1;
     if($result->num_rows>0){
@@ -41,21 +41,23 @@ else die("Mancano dati");
       if($result->num_rows>0){
         $row=$result->fetch_assoc();
         if($row["visitato"]=="")echo '<p>'.$reportato.' è rimasto a casa</p>';
-        else echo '<p>'.$reportato.' è uscito</p>';
+        else echo '<h5>'.$reportato.' è uscito</h5>';
       }
-      $result=$db->query('SELECT * FROM lupus');
+      $result=$db->query('SELECT * FROM lupus WHERE visitato="'.$reportato.'"');
       if($result->num_rows>0){
-        echo "<p>E'/Sono andato/i da lei/lui ";
+        echo "<h5>E'/Sono andato/i da lei/lui: ";
         while($row=$result->fetch_assoc()){
-          if($row["visitato"]==$reportato)echo $row["nome"]." ";
+          echo $row["nome"]." ";
         }
-        echo '</p>';
+        echo '</h5>';
       }
-    }else echo '<p>Nessun reportage</p>';
+    }else echo '<h5>Nessun reportage</h5>';
    ?>
+   <h1 class="white-text">.</h1>
+   <hr size="1" width="100%" color="black">
   <form action="verifica.php" method="post">
     <div class="row">
-      <div class="col s3 offset-s3"><h5 style="text-align:right">Rogo:</h5></div>
+      <div class="col s6"><h5 style="text-align:right">Rogo:</h5></div>
       <div class="col s3"><input type="text" name="rogo" id="rogo"></div>
     </div>
    <center><button type="submit" class="waves-effect waves-teal btn-large grey darken-4 white-text">Conferma</button></center>

@@ -1,6 +1,13 @@
 <?php
 include_once("funzioni.php");
 $db=database_connect() or die("Errore di connessione");
+$result=$db->query('SELECT aura FROM lupus WHERE nome="'.$_POST["rogo"].'"');
+$auramorto="-1";
+if($result->num_rows>0){
+  $row=$result->fetch_assoc();
+  $auramorto="".$row["aura"];
+}
+$db->query('DELETE FROM lupus WHERE nome="'.$_POST["rogo"]'"');
 $result=$db->query('SELECT * FROM lupus');
 $lupi=0;
 $stop=False;
@@ -11,7 +18,6 @@ if($n>0){
   }
   if($lupi==0 or 2*$lupi>=$n)$stop=True;
 }
-$stop=True;
 if($stop==False){
   $db->query('DELETE FROM morti WHERE 1');
   $db->query('UPDATE lupus SET visitato="", protetto=0 WHERE 1');
@@ -20,7 +26,7 @@ if($stop==False){
   echo '</form>';
   echo '<script>document.getElementById("sendpost").submit();</script>';
   die();
-}
+}else{
 ?>
 <html>
 <head>
@@ -49,3 +55,4 @@ if($stop==False){
 </body>
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 </html>
+<?php }?>

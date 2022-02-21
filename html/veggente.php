@@ -1,5 +1,18 @@
 <?php
 include_once("funzioni.php");
+$db=database_connect() or die("Errore di connessione");
+if(isset($_POST["state"])){
+$nome=$_POST["guardato"];
+$result=$db->query('SELECT nome FROM lupus WHERE tipo="Guardia"') or die("Errore sulla guardia 1");
+$guardia="";
+if($result->num_rows>0){
+  $row=$result->fetch_assoc();
+  $guardia=$row["nome"];
+}
+
+$db->query('UPDATE lupus SET visitato="'.$nome.'" WHERE nome="'.$guardia.'"');
+$db->query('UPDATE lupus SET protetto=1 WHERE nome="'.$nome.'"') or die("Errore sulla guardia 2");
+}
 $auramorto="-1";
 if(isset($_POST["auramorto"]))$aura_morto=$_POST["auramorto"];
 $reportato="-1";

@@ -10,13 +10,7 @@ if($_POST["state"]=="0"){ #identify
       $db->query('INSERT INTO lupus VALUES ("'.$value.'","'.$human.'", "'.$aur.'", "", 0)') or die("Errore nell'aggiunta del nome");
     }
   }
-  $data=array(
-    "auramorto" => "-1"
-  );
   header("Location: reporter.php");
-  #posta("reporter.php",$data);
-  #die();
-
 }
 else if($_POST["state"]=="1"){ #guardia
   $nome=$_POST["guardato"];
@@ -32,17 +26,16 @@ else if($_POST["state"]=="1"){ #guardia
     "auramorto" => $_POST["auramorto"],
     "reportato" => $_POST["reportato"]
   );
-
+echo '<html>';
+echo '<head></head>';
+echo '<body>';
 echo '<form id="sendpost" method="post" action="veggente.php">';
 echo  '<input type="hidden" name="auramorto" value="'.$_POST["auramorto"].' />';
 echo  '<input type="hidden" name="reportato" value="'.$_POST["reportato"].'" />';
 echo '</form>';
+echo '</body>';
 echo '<script>document.getElementById("sendpost").submit();</script>';
+echo '</html>';
 
 }
-else if($_POST["state"]=="2"){ #uccisione
-
-
-}
-
 ?>

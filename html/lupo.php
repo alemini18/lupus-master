@@ -1,8 +1,8 @@
 <?php
 $auramorto="-1";
-if(in_array("auramorto",$_POST))$aura_morto=$_POST["auramorto"];
+if(isset($_POST["auramorto"]))$aura_morto=$_POST["auramorto"];
 $reportato="-1";
-if(in_array("reportato",$_POST))$reportato=$_POST["reportato"];
+if(isset($_POST["reportato"]))$reportato=$_POST["reportato"];
  ?>
 <html>
 <head>
@@ -17,16 +17,16 @@ if(in_array("reportato",$_POST))$reportato=$_POST["reportato"];
 </head>
 <body>
   <div class="container center-align">
-  <h1>Guardia<br><br></h1>
+  <h1>Lupi<br><br></h1>
   <form action="simp.php" method="post">
     <input type="hidden" id="auramorto" name="auramorto" value="<?php echo $auramorto; ?>">
     <input type="hidden" id="reportato" name="reportato" value="<?php echo $reportato; ?>">
     <div class="row">
-      <div class="col s3 offset-s3"><h5 style="text-align:right;">Ucciso:</h5></div>
+      <div class="col s6"><h5 style="text-align:right;">Ucciso:</h5></div>
       <div class="col s3"><input type="text" id="morto" name="morto"></div>
     </div>
     <div class="row">
-      <div class="col s3 offset-s3"><h5 style="text-align:right;">Lupo assassino:</h5></div>
+      <div class="col s6"><h5 style="text-align:right;">Lupo assassino:</h5></div>
       <div class="col s3"><input type="text" id="assassino" name="assassino"></div>
     </div>
    <button type="submit" class="waves-effect waves-teal btn-large grey darken-4 white-text">Conferma</button>

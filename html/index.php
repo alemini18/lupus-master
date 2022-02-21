@@ -23,9 +23,8 @@ $db->query("DELETE FROM morti WHERE 1");
   for($i=0;$i<10;$i++){
     $n=1;
     if($i==8)$n=3;
-    echo '<div class="row">';
-    echo '<div class="col s3"></div>';
-    echo '<div class="col s3">';
+    echo '<div class="row">';;
+    echo '<div class="col s6">';
     echo  '<h5 style="text-align: right;">'.$ruoli[$i].'</h5>';
     echo '</div>';
     echo  '<div class="col s2">';
